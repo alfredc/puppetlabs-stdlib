@@ -33,10 +33,16 @@ class stdlib::stages {
 
   stage { 'setup':  before => Stage['main'] }
   stage { 'runtime': require => Stage['main'] }
-  -> stage { 'setup_infra': }
-  -> stage { 'deploy_infra': }
-  -> stage { 'setup_app': }
-  -> stage { 'deploy_app': }
-  -> stage { 'deploy': }
+  # Doesn't work as relationships for some reason...
+  #-> stage { 'setup_infra': }
+  #-> stage { 'deploy_infra': }
+  #-> stage { 'setup_app': }
+  #-> stage { 'deploy_app': }
+  #-> stage { 'deploy': }
+  stage { 'setup_infra': }
+  stage { 'deploy_infra': }
+  stage { 'setup_app': }
+  stage { 'deploy_app': }
+  stage { 'deploy': }
 
 }
